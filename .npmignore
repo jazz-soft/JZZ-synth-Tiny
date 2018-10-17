@@ -1,0 +1,5 @@
+minified
+.*
+bower.json
+Gruntfile.js
+*.html

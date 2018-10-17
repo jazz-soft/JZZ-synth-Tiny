@@ -1,0 +1,31 @@
+{
+  "name": "jzz-synth-tiny",
+  "version": "0.0.0",
+  "description": "Tiny GM synth",
+  "main": "javascript/JZZ.synth.Tiny.js",
+  "keywords": [
+    "MIDI",
+    "midi",
+    "webaudio",
+    "webaudioapi",
+    "web-audio",
+    "web-audio-api",
+    "synth"
+  ],
+  "author": "jazz-soft (https://jazz-soft.net/)",
+  "dependencies": {
+    "jzz": "^0.5.8"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-contrib-jshint": "^2.0.0",
+    "grunt-contrib-uglify": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jazz-soft/JZZ-synth-Tiny.git"
+  },
+  "homepage": "https://jazz-soft.net",
+  "bugs": "https://jazz-soft.org",
+  "license": "MIT"
+}
