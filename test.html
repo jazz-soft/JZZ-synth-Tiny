@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JZZ.synth.Tiny test</title>
+<script src="node_modules/jzz/javascript/JZZ.js"></script>
+<script src="javascript/webaudio-tinysynth.js"></script>
+<script src="javascript/JZZ.synth.Tiny.js"></script>
+<style type="text/css">
+.inner {position:absolute; bottom:0; left:0; width:100%; text-align:center;}
+</style>
+</head>
+
+<body>
+<h1>JZZ.synth.Tiny test</h1>
+<button onclick="play();">play</button>
+
+<script><!--
+var synth = new WebAudioTinySynth();
+function play() {
+  JZZ.synth.Tiny().note(0, 'C5', 127, 1000).wait(300).note(0, 'E5', 127, 700).wait(300).note(0, 'G5', 127, 400);
+  //synth.send([0x90, 60, 100]);
+}
+--></script>
+
+<p>
+<a href=https://jazz-soft.net>https://jazz-soft.net</a>
+</p>
+
+</body>
+</html>
