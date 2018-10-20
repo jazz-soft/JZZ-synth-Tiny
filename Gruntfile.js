@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     jshint: {
-        all: ['javascript/*.js']
+        all: ['src/*.js']
     },
     uglify: {
       javascript: {
@@ -11,6 +11,16 @@ module.exports = function(grunt) {
         dest: 'minified'
       }
     }
+  });
+  grunt.task.registerTask('assemble', 'Build script', function() {
+    var tiny = require('webaudio-tinysynth');
+    var src = grunt.file.read('src/JZZ.synth.Tiny.js').split(/\r?\n/);
+    var dest = [];
+    for (var i = 0; i < src.length; i++) {
+      if (src[i] == '//#include webaudio-tinysynth') dest.push(tiny.toString());
+      else dest.push(src[i]);
+    }
+    grunt.file.write('javascript/JZZ.synth.Tiny.js', dest.join(require('os').EOL));
   });
   grunt.task.registerTask('version', 'Check version consistency', function() {
     var pkg = grunt.file.readJSON('package.json');
@@ -27,5 +37,5 @@ module.exports = function(grunt) {
   });
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.registerTask('default', ['uglify', 'version']);
+  grunt.registerTask('default', ['assemble', 'uglify', 'version']);
 };
