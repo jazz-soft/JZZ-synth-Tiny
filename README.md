@@ -1,5 +1,5 @@
 # JZZ-synth-Tiny
-WebAudio Tiny GM mapped Synthesizer 
+Tiny Web-Audio GM Synthesizer 
 ([g200kg/webaudio-tinysynth](https://github.com/g200kg/webaudio-tinysynth))
 wrapped for [JZZ.js](https://github.com/jazz-soft/JZZ)
 

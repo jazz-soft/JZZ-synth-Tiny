@@ -14,7 +14,7 @@
   if (!JZZ.synth) JZZ.synth = {};
   if (JZZ.synth.Tiny) return;
 
-  var _version = '0.0.0';
+  var _version = '1.0.0';
 
 function WebAudioTinySynth(opt){
   this.__proto__ = this.sy =
@@ -761,8 +761,11 @@ function WebAudioTinySynth(opt){
     },
     _pruneNote:function(nt){
       for(var k=nt.o.length-1;k>=0;--k){
-        if(nt.o[k].frequency)
-          this.chmod[nt.ch].disconnect(nt.o[k].detune);
+        if(nt.o[k].frequency) {
+          try {
+            this.chmod[nt.ch].disconnect(nt.o[k].detune);
+          } catch (e) {} // this was crashing after calling setAudioContext()
+        }
         nt.o[k].disconnect();
         if(nt.o[k].frequency)
           nt.o[k].frequency.cancelScheduledValues(0);

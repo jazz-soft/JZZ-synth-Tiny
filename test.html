@@ -14,10 +14,9 @@
 <button onclick="play();">play</button>
 
 <script><!--
-var synth = new WebAudioTinySynth();
+synth = JZZ.synth.Tiny();
 function play() {
-  JZZ.synth.Tiny().note(0, 'C5', 127, 1000).wait(300).note(0, 'E5', 127, 700).wait(300).note(0, 'G5', 127, 400);
-  //synth.send([0x90, 60, 100]);
+  synth.note(0, 'C5', 127, 1000).wait(300).note(0, 'E5', 127, 700).wait(300).note(0, 'G5', 127, 400).wait(300).note(9, 'G5', 127);
 }
 --></script>
 
