@@ -1156,7 +1156,11 @@ function WebAudioTinySynth(opt){
       synth = new WebAudioTinySynth();
       _noname.push(synth);
     }
-    //port.plug = function(dest) { synth.plug(dest); };
+    port.plug = function(dest) {
+      if (dest && (dest.context instanceof AudioContext || dest.context instanceof webkitAudioContext)) {
+        synth.setAudioContext(dest.context, dest);
+      }
+    };
     port._info = _engine._info(name);
     port._receive = function(msg) { synth.send(msg); };
     port._resume();

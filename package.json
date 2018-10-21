@@ -20,7 +20,7 @@
     "grunt": "^1.0.3",
     "grunt-contrib-jshint": "^2.0.0",
     "grunt-contrib-uglify": "^4.0.0",
-    "webaudio-tinysynth": "0.0.0"
+    "webaudio-tinysynth": "^1.0.0"
   },
   "repository": {
     "type": "git",
