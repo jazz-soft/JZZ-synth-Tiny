@@ -2,23 +2,56 @@
 <html>
 <head>
 <title>JZZ.synth.Tiny test</title>
+<style type="text/css">
+button { text-align:left;}
+</style>
 <script src="node_modules/jzz/javascript/JZZ.js"></script>
 <script src="javascript/JZZ.synth.Tiny.js"></script>
-<style type="text/css">
-.inner {position:absolute; bottom:0; left:0; width:100%; text-align:center;}
-</style>
+<script><!--
+function button1(){
+  JZZ.synth.Tiny()
+    .or(function(){ alert('Cannot open MIDI-Out!\n' + this.err()); })
+    .note(0, 'C5', 127, 500).wait(500)
+    .note(0, 'E5', 127, 500).wait(500)
+    .note(0, 'G5', 127, 500).wait(500)
+    .note(9, 'C6', 127, 500);
+}
+function button2(){
+  JZZ.synth.Tiny.register('Web Audio');
+  JZZ().or(function(){ alert('Cannot start MIDI engine!\n' + this.err()); })
+    .openMidiOut('Web Audio').or(function(){ alert('Cannot open MIDI-Out!\n' + this.err()); })
+    .note(0, 'C5', 127, 500).wait(500)
+    .note(0, 'E5', 127, 500).wait(500)
+    .note(0, 'G5', 127, 500).wait(500)
+    .note(9, 'C6', 127, 500);
+}
+
+--></script>
+
 </head>
 
 <body>
-<h1>JZZ.synth.Tiny test</h1>
-<button onclick="play();">play</button>
+<h1>JZZ.synth.Tiny</h1>
+<button onclick='button1();'><pre>
+JZZ.synth.Tiny()
 
-<script><!--
-synth = JZZ.synth.Tiny();
-function play() {
-  synth.note(0, 'C5', 127, 1000).wait(300).note(0, 'E5', 127, 700).wait(300).note(0, 'G5', 127, 400).wait(300).note(9, 'G5', 127);
-}
---></script>
+  .note(0, 'C5', 127, 500).wait(500)
+  .note(0, 'E5', 127, 500).wait(500)
+  .note(0, 'G5', 127, 500).wait(500)
+  .note(9, 'C6', 127, 500);
+</pre></button>
+
+<button onclick='button2();'><pre>
+JZZ.synth.Tiny.register('Web Audio');
+JZZ().openMidiOut('Web Audio')
+  .note(0, 'C5', 127, 500).wait(500)
+  .note(0, 'E5', 127, 500).wait(500)
+  .note(0, 'G5', 127, 500).wait(500)
+  .note(9, 'C6', 127, 500);
+</pre></button>
+
+<p id=note>
+</p>
 
 <p>
 <a href=https://jazz-soft.net>https://jazz-soft.net</a>
