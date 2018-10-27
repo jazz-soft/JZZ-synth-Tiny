@@ -14,7 +14,7 @@
   if (!JZZ.synth) JZZ.synth = {};
   if (JZZ.synth.Tiny) return;
 
-  var _version = '1.0.1';
+  var _version = '1.0.2';
 
 //#include webaudio-tinysynth
 

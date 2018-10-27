@@ -1,11 +1,12 @@
 # JZZ-synth-Tiny
+
+[![npm](https://img.shields.io/npm/v/jzz-synth-tiny.svg)](https://www.npmjs.com/package/jzz-synth-tiny)
+
 Tiny Web-Audio GM Synthesizer 
 ([g200kg/webaudio-tinysynth](https://github.com/g200kg/webaudio-tinysynth))
 wrapped for [JZZ.js](https://github.com/jazz-soft/JZZ)
 
 Please check the [demo](https://jazz-soft.github.io/modules/tiny/index.html)...
-
-[![npm](https://img.shields.io/npm/v/jzz-synth-tiny.svg)](https://www.npmjs.com/package/jzz-synth-tiny)
 
 ## Install
 
