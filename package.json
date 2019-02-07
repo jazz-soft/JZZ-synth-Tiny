@@ -1,6 +1,6 @@
 {
   "name": "jzz-synth-tiny",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Tiny Web-Audio GM synth",
   "main": "javascript/JZZ.synth.Tiny.js",
   "keywords": [
@@ -19,8 +19,7 @@
   "devDependencies": {
     "grunt": "^1.0.3",
     "grunt-contrib-jshint": "^2.0.0",
-    "grunt-contrib-uglify": "^4.0.0",
-    "webaudio-tinysynth": "^1.1.0"
+    "grunt-contrib-uglify": "^4.0.0"
   },
   "repository": {
     "type": "git",

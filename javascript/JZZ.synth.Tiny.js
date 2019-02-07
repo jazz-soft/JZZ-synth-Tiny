@@ -14,7 +14,7 @@
   if (!JZZ.synth) JZZ.synth = {};
   if (JZZ.synth.Tiny) return;
 
-  var _version = '1.0.4';
+  var _version = '1.0.5';
 
 function WebAudioTinySynth(opt){
   this.__proto__ = this.sy =
@@ -435,41 +435,6 @@ function WebAudioTinySynth(opt){
     setVoices:function(v){
       this.voices=v;
     },
-    getPlayStatus:function(){
-      return {play:this.playing, maxTick:this.maxTick, curTick:this.playTick};
-    },
-    locateMIDI:function(tick){
-      var i,p=this.playing;
-      this.stopMIDI();
-      for(i=0;i<this.song.ev.length && tick>this.song.ev[i].t;++i){
-        var m=this.song.ev[i];
-        var ch=m.m[0]&0xf;
-        switch(m.m[0]&0xf0){
-        case 0xb0:
-          switch(m.m[1]){
-          case 1:  this.setModulation(ch,m.m[2]); break;
-          case 7:  this.setChVol(ch,m.m[2]); break;
-          case 10: this.setPan(ch,m.m[2]); break;
-          case 11: this.setExpression(ch,m.m[2]); break;
-          case 64: this.setSustain(ch,m.m[2]); break;
-          }
-          break;
-        case 0xc0: this.pg[m.m[0]&0x0f]=m.m[1]; break;
-        }
-        if(m.m[0]==0xff51)
-          this.song.tempo=m.m[1];
-      }
-      if(!this.song.ev[i]){
-        this.playIndex=0;
-        this.playTick=this.maxTick;
-      }
-      else{
-        this.playIndex=i;
-        this.playTick=this.song.ev[i].t;
-      }
-      if(p)
-        this.playMIDI();
-    },
     reset:function(){
       for(var i=0;i<16;++i){
         this.setProgram(i,0);
@@ -481,25 +446,6 @@ function WebAudioTinySynth(opt){
         this.rhythm[i]=0;
       }
       this.rhythm[9]=1;
-    },
-    stopMIDI:function(){
-      this.playing=0;
-      for(var i=0;i<16;++i)
-        this.allSoundOff(i);
-    },
-    playMIDI:function(){
-      if(!this.song)
-        return;
-      var dummy=this.actx.createOscillator();
-      dummy.connect(this.actx.destination);
-      dummy.frequency.value=0;
-      dummy.start(0);
-      dummy.stop(this.actx.currentTime+0.001);
-      if(this.playTick>=this.maxTick)
-        this.playTick=0,this.playIndex=0;
-      this.playTime=this.actx.currentTime+.1;
-      this.tick2Time=4*60/this.song.tempo/this.song.timebase;
-      this.playing=1;
     },
     setQuality:function(q){
       var i,k,n,p;
