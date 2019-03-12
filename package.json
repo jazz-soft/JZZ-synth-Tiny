@@ -1,6 +1,6 @@
 {
   "name": "jzz-synth-tiny",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Tiny Web-Audio GM synth",
   "main": "javascript/JZZ.synth.Tiny.js",
   "keywords": [
