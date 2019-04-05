@@ -14,12 +14,12 @@
   ],
   "author": "jazz-soft (https://jazz-soft.net/)",
   "dependencies": {
-    "jzz": "^0.7.1"
+    "jzz": "^0.7.2"
   },
   "devDependencies": {
-    "grunt": "^1.0.3",
-    "grunt-contrib-jshint": "^2.0.0",
-    "grunt-contrib-uglify": "^4.0.0"
+    "grunt": "^1.0.4",
+    "grunt-contrib-jshint": "^2.1.0",
+    "grunt-contrib-uglify": "^4.0.1"
   },
   "repository": {
     "type": "git",
