@@ -14,7 +14,7 @@
   ],
   "author": "jazz-soft (https://jazz-soft.net/)",
   "dependencies": {
-    "jzz": "^0.7.3"
+    "jzz": "^0.7.4"
   },
   "devDependencies": {
     "grunt": "^1.0.4",
