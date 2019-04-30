@@ -7,8 +7,9 @@
   ],
   "license": "MIT",
   "keywords": [
-    "MIDI",
     "midi",
+    "midi-synth",
+    "general-midi",
     "webaudio",
     "webaudioapi",
     "web-audio",
