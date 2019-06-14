@@ -1,6 +1,7 @@
 # JZZ-synth-Tiny
 
 [![npm](https://img.shields.io/npm/v/jzz-synth-tiny.svg)](https://www.npmjs.com/package/jzz-synth-tiny)
+[![npm](https://img.shields.io/npm/dt/jzz-synth-tiny.svg)](https://www.npmjs.com/package/jzz-synth-tiny)
 
 Tiny Web-Audio GM Synthesizer 
 ([g200kg/webaudio-tinysynth](https://github.com/g200kg/webaudio-tinysynth))
