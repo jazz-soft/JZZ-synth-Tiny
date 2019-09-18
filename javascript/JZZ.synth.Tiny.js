@@ -14,7 +14,7 @@
   if (!JZZ.synth) JZZ.synth = {};
   if (JZZ.synth.Tiny) return;
 
-  var _version = '1.1.2';
+  var _version = '1.1.3';
 
 function WebAudioTinySynth(opt){
   this.__proto__ = this.sy =
@@ -439,6 +439,7 @@ function WebAudioTinySynth(opt){
       for(var i=0;i<16;++i){
         this.setProgram(i,0);
         this.setBendRange(i,0x100);
+        this.setModulation(i,0);
         this.setChVol(i,100);
         this.setPan(i,64);
         this.resetAllControllers(i);
