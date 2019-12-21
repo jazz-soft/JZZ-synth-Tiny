@@ -14,7 +14,7 @@
   if (!JZZ.synth) JZZ.synth = {};
   if (JZZ.synth.Tiny) return;
 
-  var _version = '1.1.3';
+  var _version = '1.1.4';
 
 function WebAudioTinySynth(opt){
   this.__proto__ = this.sy =
@@ -28,7 +28,7 @@ function WebAudioTinySynth(opt){
       debug:      {type:Number, value:0},
       src:        {type:String, value:null, observer:"loadMIDIUrl"},
       loop:       {type:Number, value:0},
-      internalcontext: {type:Number, value:1},
+      //internalcontext: {type:Number, value:1},
       tsmode:     {type:Number, value:0},
       voices:     {type:Number, value:64},
       useReverb:  {type:Number, value:1},
@@ -410,10 +410,10 @@ function WebAudioTinySynth(opt){
           }
         }.bind(this),60
       );
-      if(this.internalcontext){
-        window.AudioContext = window.AudioContext || window.webkitAudioContext;
-        this.setAudioContext(new AudioContext());
-      }
+      //if(this.internalcontext){
+      //  window.AudioContext = window.AudioContext || window.webkitAudioContext;
+      //  this.setAudioContext(new AudioContext());
+      //}
       this.isReady=1;
     },
     setMasterVol:function(v){
@@ -888,6 +888,7 @@ function WebAudioTinySynth(opt){
       synth = new WebAudioTinySynth();
       _noname.push(synth);
     }
+    synth.setAudioContext(_ac);
     port.plug = function(dest) {
       if (dest && (dest.context instanceof AudioContext || dest.context instanceof webkitAudioContext)) {
         synth.setAudioContext(dest.context, dest);
