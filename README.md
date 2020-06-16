@@ -24,10 +24,16 @@ or get the full development version and minified scripts from [**GitHub**](https
     <script src="JZZ.synth.Tiny.js"></script>
     //...
 
-##### CDN (always the latest version!)
+##### CDN (jsdelivr)
 
     <script src="https://cdn.jsdelivr.net/npm/jzz"></script>
     <script src="https://cdn.jsdelivr.net/npm/jzz-synth-tiny"></script>
+    //...
+
+##### CDN (unpkg)
+
+    <script src="https://unpkg.com/jzz"></script>
+    <script src="https://unpkg.com/jzz-synth-tiny"></script>
     //...
 
 ##### CommonJS
