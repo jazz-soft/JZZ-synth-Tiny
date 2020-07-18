@@ -18,7 +18,7 @@
     "jzz": "^1.0.8"
   },
   "devDependencies": {
-    "grunt": "^1.2.0",
+    "grunt": "^1.2.1",
     "grunt-contrib-jshint": "^2.1.0",
     "grunt-contrib-uglify": "^4.0.1"
   },

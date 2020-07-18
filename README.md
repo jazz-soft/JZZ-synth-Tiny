@@ -20,40 +20,52 @@ or get the full development version and minified scripts from [**GitHub**](https
 
 ##### Plain HTML
 
-    <script src="JZZ.js"></script>
-    <script src="JZZ.synth.Tiny.js"></script>
-    //...
+```html
+<script src="JZZ.js"></script>
+<script src="JZZ.synth.Tiny.js"></script>
+//...
+```
 
 ##### CDN (jsdelivr)
 
-    <script src="https://cdn.jsdelivr.net/npm/jzz"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jzz-synth-tiny"></script>
-    //...
+```html
+<script src="https://cdn.jsdelivr.net/npm/jzz"></script>
+<script src="https://cdn.jsdelivr.net/npm/jzz-synth-tiny"></script>
+//...
+```
 
 ##### CDN (unpkg)
 
-    <script src="https://unpkg.com/jzz"></script>
-    <script src="https://unpkg.com/jzz-synth-tiny"></script>
-    //...
+```html
+<script src="https://unpkg.com/jzz"></script>
+<script src="https://unpkg.com/jzz-synth-tiny"></script>
+//...
+```
 
 ##### CommonJS
 
-    var JZZ = require('jzz');
-    require('jzz-synth-tiny')(JZZ);
-    //...
+```js
+var JZZ = require('jzz');
+require('jzz-synth-tiny')(JZZ);
+//...
+```
 
 ##### AMD
 
-    require(['JZZ', 'JZZ.synth.Tiny'], function(JZZ, dummy) {
-      // ...
-    });
+```js
+require(['JZZ', 'JZZ.synth.Tiny'], function(JZZ, dummy) {
+  // ...
+});
+```
 
 ##### //...
 
-    JZZ.synth.Tiny().noteOn(0, 'C5', 127)
-         .wait(500).noteOn(0, 'E5', 127)
-         .wait(500).noteOn(0, 'G5', 127);
-         .wait(500).noteOff(0, 'C5').noteOff(0, 'E5').noteOff(0, 'G5');
+```js
+JZZ.synth.Tiny().noteOn(0, 'C5', 127)
+   .wait(500).noteOn(0, 'E5', 127)
+   .wait(500).noteOn(0, 'G5', 127);
+   .wait(500).noteOff(0, 'C5').noteOff(0, 'E5').noteOff(0, 'G5');
+```
 
 ## More information
 
