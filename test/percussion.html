@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JZZ.synth.Tiny - percussion</title>
+<script src="../node_modules/jzz/javascript/JZZ.js"></script>
+<script src="../node_modules/jzz-midi-gm/javascript/JZZ.midi.GM.js"></script>
+<script src="../javascript/JZZ.synth.Tiny.js"></script>
+</head>
+
+<body>
+<h1>JZZ.synth.Tiny - percussion</h1>
+
+<p id=log>
+Please enable JavaScript!
+</p>
+
+<script>
+var i, s;
+var txt = [];
+var log = document.getElementById('log');
+log.innerHTML = 'Please run: <tt>npm install</tt>';
+var n = 0;
+var tiny = JZZ.synth.Tiny().or(function() { print('Cannot open the Synth'); });
+tiny.and(test);
+
+function test() {
+  for (n++; !JZZ.MIDI.percussionName(n); n++) if (n >= 128) return;
+  print('playing ' + n + ': ' + JZZ.MIDI.percussionName(n));
+  tiny.send(0x99, n, 0x7f).wait(300).send(0x89, n, 0x7f).and(test);
+}
+
+function print(str) {
+  txt.push(str);
+  log.innerHTML = txt.join('<br>');
+}
+</script>
+
+</body>
+</html>
