@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>JZZ.synth.Tiny - percussion</title>
+<title>JZZ.synth.Tiny - voices</title>
 <script src="../node_modules/jzz/javascript/JZZ.js"></script>
 <script src="../node_modules/jzz-midi-gm/javascript/JZZ.midi.GM.js"></script>
 <script src="../javascript/JZZ.synth.Tiny.js"></script>
 </head>
 
 <body>
-<h1>JZZ.synth.Tiny - percussion</h1>
+<h1>JZZ.synth.Tiny - voices</h1>
 
 <p id=log>
 Please enable JavaScript!
@@ -19,15 +19,30 @@ var i, s;
 var txt = [];
 var log = document.getElementById('log');
 log.innerHTML = 'Please run: <tt>npm install</tt>';
-var n = 0;
+var n = -1;
 var tiny = JZZ.synth.Tiny().or(function() { print('Cannot open the Synth'); });
 tiny.and(test);
 
+function play() {
+  var i;
+  var a = [60, 64, 67, 71];
+  var synth = tiny.send(0xc0, n);
+  for (i = 0; i < a.length; i++) synth = synth.send(0x90, a[i], 0x7f).wait(200);
+  synth = synth.wait(200);
+  for (i = 1; i < 8; i++) synth = synth.send(0xe0, 0, 63 + i * 8).wait(20);
+  synth = synth.wait(100);
+  for (i = 7; i >= 0; i--) synth = synth.send(0xe0, 0, 64 + i * 8).wait(20);
+  synth = synth.wait(100);
+  for (i = 0; i < a.length; i++) synth = synth.send(0x80, a[i], 0x7f);
+  synth.and(test);
+}
+
 function test() {
-  for (n++; !JZZ.MIDI.percussionName(n); n++) if (n >= 128) return;
-  print('playing ' + n + ': ' + JZZ.MIDI.percussionName(n));
+  n++;
+  if (n >= 128) return;
+  print('playing ' + n + ': ' + JZZ.MIDI.programName(n));
   window.scrollTo(0, document.body.scrollHeight);
-  tiny.send(0x99, n, 0x7f).wait(300).send(0x89, n, 0x7f).and(test);
+  play();
 }
 
 function print(str) {
