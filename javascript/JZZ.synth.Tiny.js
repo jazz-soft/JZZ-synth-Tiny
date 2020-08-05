@@ -538,8 +538,10 @@ function WebAudioTinySynth(opt){
           o[i].playbackRate.value=fp[i]/440;
           if(pn.p!=1)
             this._setParamTarget(o[i].playbackRate,fp[i]/440*pn.p,t,pn.q);
-          this.chmod[ch].connect(o[i].detune);
-          o[i].detune.value=this.bend[ch];
+          if (o[i].detune) {
+            this.chmod[ch].connect(o[i].detune);
+            o[i].detune.value=this.bend[ch];
+          }
           break;
         default:
           o[i]=this.actx.createOscillator();
@@ -550,8 +552,10 @@ function WebAudioTinySynth(opt){
             o[i].setPeriodicWave(this.wave[pn.w]);
           else
             o[i].type=pn.w;
-          this.chmod[ch].connect(o[i].detune);
-          o[i].detune.value=this.bend[ch];
+          if (o[i].detune) {
+            this.chmod[ch].connect(o[i].detune);
+            o[i].detune.value=this.bend[ch];
+          }
           break;
         }
         g[i]=this.actx.createGain();
@@ -571,7 +575,7 @@ function WebAudioTinySynth(opt){
         o[i].start(t);
         if(this.rhythm[ch]){
           // difference between '()=>' and 'function()': need to pack parameters
-          o[i].onended = function(a, b) { return function() { a.disconnect(b); }; }(this.chmod[ch], o[i].detune);
+          o[i].onended = function(a, b) { return function() { if (b) a.disconnect(b); }; }(this.chmod[ch], o[i].detune);
           o[i].stop(t+p[0].d*this.releaseRatio);
         }
       }
@@ -658,7 +662,7 @@ function WebAudioTinySynth(opt){
         if(nt.ch==ch){
           for(var k=nt.o.length-1;k>=0;--k){
             if(nt.o[k].frequency)
-              nt.o[k].detune.setValueAtTime(this.bend[ch],t);
+              if (nt.o[k].detune) nt.o[k].detune.setValueAtTime(this.bend[ch],t);
           }
         }
       }
