@@ -357,10 +357,12 @@ function WebAudioTinySynth(opt){
       var i;
       this.pg=[]; this.vol=[]; this.ex=[]; this.bend=[]; this.rpnidx=[]; this.brange=[];
       this.sustain=[]; this.notetab=[]; this.rhythm=[];
+      this.masterTuningC=0; this.masterTuningF=0; this.tuningC=[]; this.tuningF=[];
       this.maxTick=0, this.playTick=0, this.playing=0; this.releaseRatio=3.5;
       for(var i=0;i<16;++i){
         this.pg[i]=0; this.vol[i]=3*100*100/(127*127);
         this.bend[i]=0; this.brange[i]=0x100;
+        this.tuningC[i]=0; this.tuningF[i]=0;
         this.rhythm[i]=0;
       }
       this.rhythm[9]=1;
@@ -445,7 +447,11 @@ function WebAudioTinySynth(opt){
         this.resetAllControllers(i);
         this.allSoundOff(i);
         this.rhythm[i]=0;
+        this.tuningC[i]=0;
+        this.tuningF[i]=0;
       }
+      this.masterTuningC[i]=0;
+      this.masterTuningF[i]=0;
       this.rhythm[9]=1;
     },
     setQuality:function(q){
@@ -517,7 +523,7 @@ function WebAudioTinySynth(opt){
     _note:function(t,ch,n,v,p){
       var out,sc,pn;
       var o=[],g=[],vp=[],fp=[],r=[];
-      var f=440*Math.pow(2,(n-69)/12);
+      var f=440*Math.pow(2,(n-69 + this.masterTuningC + this.tuningC[ch] + (this.masterTuningF + this.tuningF[ch])/8192)/12);
       this._limitVoices(ch,n);
       for(var i=0;i<p.length;++i){
         pn=p[i];
@@ -724,16 +730,32 @@ function WebAudioTinySynth(opt){
         case 10: this.setPan(ch,msg[2],t); break;
         case 11: this.setExpression(ch,msg[2],t); break;
         case 64: this.setSustain(ch,msg[2],t); break;
-        case 98:  case 98: this.rpnidx[ch]=0x3fff; break; /* nrpn lsb/msb */
+        case 98:  case 99: this.rpnidx[ch]=0x3fff; break; /* nrpn lsb/msb */
         case 100: this.rpnidx[ch]=(this.rpnidx[ch]&0x3f80)|msg[2]; break; /* rpn lsb */
         case 101: this.rpnidx[ch]=(this.rpnidx[ch]&0x7f)|(msg[2]<<7); break; /* rpn msb */
         case 6:  /* data entry msb */
-          if(this.rpnidx[ch]==0)
-            this.brange[ch]=(msg[2]<<7)+(this.brange[ch]&0x7f);
+          switch (this.rpnidx[ch]) {
+            case 0:
+              this.brange[ch]=(msg[2]<<7)+(this.brange[ch]&0x7f);
+              break;
+            case 1:
+              this.tuningF[ch]=(msg[2]<<7)+((this.tuningF[ch]+0x2000)&0x7f)-0x2000;
+              break;
+            case 2:
+              this.tuningC[ch]=msg[2]-0x40;
+              break;
+          }
           break;
         case 38:  /* data entry lsb */
-          if(this.rpnidx[ch]==0)
-            this.brange[ch]=(this.brange[ch]&0x3f80)|msg[2];
+          switch (this.rpnidx[ch]) {
+            case 0:
+              this.brange[ch]=(this.brange[ch]&0x3f80)|msg[2];
+              break;
+            case 1:
+              this.tuningF[ch]=((this.tuningF[ch]+0x2000)&0x3f80)|msg[2]-0x2000;
+              break;
+            case 2: break;
+          }
           break;
         case 120:  /* all sound off */
         case 123:  /* all notes off */
