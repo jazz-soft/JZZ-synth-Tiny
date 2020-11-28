@@ -14,7 +14,7 @@
   if (!JZZ.synth) JZZ.synth = {};
   if (JZZ.synth.Tiny) return;
 
-  var _version = '1.2.1';
+  var _version = '1.2.2';
 
 function WebAudioTinySynth(opt){
   this.__proto__ = this.sy =
@@ -450,8 +450,8 @@ function WebAudioTinySynth(opt){
         this.tuningC[i]=0;
         this.tuningF[i]=0;
       }
-      this.masterTuningC[i]=0;
-      this.masterTuningF[i]=0;
+      this.masterTuningC=0;
+      this.masterTuningF=0;
       this.rhythm[9]=1;
     },
     setQuality:function(q){
@@ -779,10 +779,20 @@ function WebAudioTinySynth(opt){
           for(var ii=0;ii<msg.length;++ii)
             ds.push(msg[ii].toString(16));
         }
-        if(msg[1]==0x41&&msg[2]==0x10&&msg[3]==0x42&&msg[4]==0x12&&msg[5]==0x40){
-          if((msg[6]&0xf0)==0x10&&msg[7]==0x15){
-            var ch=[9,0,1,2,3,4,5,6,7,8,10,11,12,13,14,15][msg[6]&0xf];
-            this.rhythm[ch]=msg[8];
+        if (msg[0]==0xf0) {
+          if (msg[1]==0x7f && msg[3]==4) {
+            if (msg[4]==3 && msg.length >= 8) { // Master Fine Tuning
+              this.masterTuningF = msg[6]*0x80 + msg[5] - 8192;
+            }
+            if (msg[4]==4 && msg.length >= 8) { // Master Coarse Tuning
+              this.masterTuningC = msg[6]-0x40;
+            }
+          }
+          if(msg[1]==0x41&&msg[2]==0x10&&msg[3]==0x42&&msg[4]==0x12&&msg[5]==0x40){
+            if((msg[6]&0xf0)==0x10&&msg[7]==0x15){
+              var ch=[9,0,1,2,3,4,5,6,7,8,10,11,12,13,14,15][msg[6]&0xf];
+              this.rhythm[ch]=msg[8];
+            }
           }
         }
         break;
