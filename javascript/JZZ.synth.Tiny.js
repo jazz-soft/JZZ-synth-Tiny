@@ -14,7 +14,7 @@
   if (!JZZ.synth) JZZ.synth = {};
   if (JZZ.synth.Tiny) return;
 
-  var _version = '1.2.3';
+  var _version = '1.2.4';
 
 function WebAudioTinySynth(opt){
   this.__proto__ = this.sy =
@@ -894,6 +894,19 @@ function WebAudioTinySynth(opt){
   this.ready();
 }
 
+  function _clone(obj, key, val) {
+    if (typeof key == 'undefined') return _clone(obj, [], []);
+    if (obj instanceof Object) {
+      for (var i = 0; i < key.length; i++) if (key[i] === obj) return val[i];
+      var ret;
+      if (obj instanceof Array) ret = []; else ret = {};
+      key.push(obj); val.push(ret);
+      for(var k in obj) if (obj.hasOwnProperty(k)) ret[k] = _clone(obj[k], key, val);
+      return ret;
+    }
+    return obj;
+  }
+
   var _ac = JZZ.lib.getAudioContext();
 
   var _synth = {};
@@ -928,6 +941,8 @@ function WebAudioTinySynth(opt){
         synth.setAudioContext(dest.context, dest);
       }
     };
+    port.setSynth = function(n, s, k) { synth.setTimbre(!!k, n, _clone(s)); };
+    port.getSynth = function(n, k) { return k ? _clone(synth.drummap[n - 35]) : _clone(synth.program[n]); };
     port._info = _engine._info(name);
     port._receive = function(msg) { synth.send(msg); };
     port._resume();
