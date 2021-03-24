@@ -59,7 +59,9 @@ require(['JZZ', 'JZZ.synth.Tiny'], function(JZZ, dummy) {
 });
 ```
 
-##### //...
+## API
+
+##### Play directly
 
 ```js
 JZZ.synth.Tiny().noteOn(0, 'C5', 127)
@@ -68,7 +70,18 @@ JZZ.synth.Tiny().noteOn(0, 'C5', 127)
    .wait(500).noteOff(0, 'C5').noteOff(0, 'E5').noteOff(0, 'G5');
 ```
 
+##### Register as MIDI port
+
+```js
+JZZ.synth.Tiny.register('Web Audio');
+
+JZZ().openMidiOut('Web Audio').noteOn(0, 'C5', 127)
+   .wait(500).noteOn(0, 'E5', 127)
+   .wait(500).noteOn(0, 'G5', 127);
+   .wait(500).noteOff(0, 'C5').noteOff(0, 'E5').noteOff(0, 'G5');
+```
+To make vitual port visible by Web MIDI API, please check https://github.com/jazz-soft/JZZ#virtual-midi-ports
+
 ## More information
 
 Please visit [**https://jazz-soft.net**](https://jazz-soft.net) for more information.  
-Your questions and comments are welcome [**here**](https://jazz-soft.org).
