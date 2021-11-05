@@ -796,7 +796,7 @@ function WebAudioTinySynth(opt){
               if (msg[7]==0x15) {
                 this.rhythm[c]=msg[8];
               }
-              else if (msg[7] >= 0x40 && msg[7] <= 0x4b && msg.length==11) { // Scale Tuning
+              else if (msg[7] >= 0x40 && msg[7] <= 0x4b) { // Scale Tuning
                 this.scaleTuning[c][msg[7]-0x40] = (msg[8]-0x40) / 100;
               }
             }
