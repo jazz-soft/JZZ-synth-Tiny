@@ -13,7 +13,6 @@ Please check the [demo](https://jazz-soft.github.io/modules/tiny/index.html)...
 ## Install
 
 `npm install jzz-synth-tiny`  
-or `bower install jzz-synth-tiny`  
 or `yarn add jzz-synth-tiny`  
 or get the full development version and minified scripts from [**GitHub**](https://github.com/jazz-soft/JZZ-synth-Tiny)
 
