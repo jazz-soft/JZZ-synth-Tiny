@@ -2,6 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/jzz-synth-tiny.svg)](https://www.npmjs.com/package/jzz-synth-tiny)
 [![npm](https://img.shields.io/npm/dt/jzz-synth-tiny.svg)](https://www.npmjs.com/package/jzz-synth-tiny)
+[![jsDelivr](https://data.jsdelivr.com/v1/package/npm/jzz-synth-tiny/badge)](https://www.jsdelivr.com/package/npm/jzz-synth-tiny)
 [![Try jzz-synth-tiny on RunKit](https://badge.runkitcdn.com/jzz-synth-tiny.svg)](https://npm.runkit.com/jzz-synth-tiny)
 
 Tiny Web-Audio GM Synthesizer 
