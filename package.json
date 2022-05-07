@@ -5,6 +5,7 @@
   "main": "javascript/JZZ.synth.Tiny.js",
   "scripts": {
     "test": "nyc mocha test/mocha.js",
+    "lint": "eslint test",
     "coverage": "nyc report --reporter=lcov"
   },
   "keywords": [
@@ -22,6 +23,7 @@
     "jzz": "^1.5.1"
   },
   "devDependencies": {
+    "eslint": "^8.15.0",
     "grunt": "^1.5.2",
     "grunt-contrib-jshint": "^3.2.0",
     "grunt-contrib-uglify": "^5.2.1",

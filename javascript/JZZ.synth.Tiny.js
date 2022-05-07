@@ -939,7 +939,7 @@ function WebAudioTinySynth(opt){
   _engine._info = function(name) {
     if (!name) name = 'JZZ.synth.Tiny';
     return {
-      type: 'Web Audo',
+      type: 'Web Audio',
       name: name,
       manufacturer: 'virtual',
       version: _version
