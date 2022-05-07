@@ -1,4 +1,5 @@
 (function(global, factory) {
+  /* istanbul ignore next */
   if (typeof exports === 'object' && typeof module !== 'undefined') {
     module.exports = factory;
   }
@@ -10,8 +11,11 @@
   }
 })(this, function(JZZ) {
 
+  /* istanbul ignore next */
   if (!JZZ) return;
+  /* istanbul ignore next */
   if (!JZZ.synth) JZZ.synth = {};
+  /* istanbul ignore next */
   if (JZZ.synth.Tiny) return;
 
   var _version = '1.2.9';
@@ -922,7 +926,11 @@ function WebAudioTinySynth(opt){
     return obj;
   }
 
-  var _ac = JZZ.lib.getAudioContext();
+  var _ac;
+  function initAC() {
+    if (!_ac) _ac = JZZ.lib.getAudioContext();
+    return !!_ac;
+  }
 
   var _synth = {};
   var _noname = [];
@@ -939,7 +947,12 @@ function WebAudioTinySynth(opt){
   };
 
   _engine._openOut = function(port, name) {
-    if (!_ac) { port._crash('AudioContext not supported'); return; }
+    initAC();
+    /* istanbul ignore next */
+    if (!_ac) {
+      port._crash('AudioContext not supported');
+      return;
+    }
     var synth;
     if (typeof name !== 'undefined') {
       name = '' + name;
@@ -968,7 +981,7 @@ function WebAudioTinySynth(opt){
   };
 
   JZZ.synth.Tiny.register = function(name) {
-    return _ac ? JZZ.lib.registerMidiOut(name, _engine) : false;
+    return initAC() ? JZZ.lib.registerMidiOut(name, _engine) : false;
   };
 
   JZZ.synth.Tiny.version = function() { return _version; };
