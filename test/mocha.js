@@ -6,6 +6,8 @@ require('..')(JZZ);
 
 global.window = require('web-audio-test');
 global.setInterval = function() {};
+const _startTime = Date.now();
+global.performance = { now: function() { return Date.now() - _startTime; } };
 
 describe('register', function() {
   it('register', function() {
