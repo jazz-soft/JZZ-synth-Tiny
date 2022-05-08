@@ -40,11 +40,53 @@ describe('web-audio', function() {
     synth.plug({ context: 'dummy' });
     synth.plug({ context: JZZ.lib.getAudioContext() });
   });
+  it('synth', function() {
+    var synth = JZZ.synth.Tiny();
+    var v1 = synth.getSynth(60);
+    synth.setSynth(60, v1);
+    var v2 = synth.getSynth(60, true);
+    synth.setSynth(60, v2, true);
+  });
   it('play note', function() {
     var synth = JZZ.synth.Tiny();
     synth.noteOn(0, 60, 127);
+    synth.noteOn(0, 60, 0);
     synth.noteOff(0, 60);
     synth.noteOn(9, 60, 127);
+    synth.noteOn(9, 0, 127);
     synth.noteOff(9, 60);
+  });
+  it('program', function() {
+    var synth = JZZ.synth.Tiny();
+    synth.program(1, 8);
+  });
+  it('pitch bend', function() {
+    var synth = JZZ.synth.Tiny();
+    synth.pitchBendF(1, 0.5);
+    synth.noteOn(1, 60);
+    synth.pitchBendF(1, 0);
+  });
+  it('reset', function() {
+    var synth = JZZ.synth.Tiny();
+    synth.allNotesOff(0);
+    synth.allSoundOff(0);
+    synth.omni(0);
+    synth.resetAllControllers(0);
+  });
+  it('master volume', function() {
+    var synth = JZZ.synth.Tiny();
+    synth.sxMasterVolumeF(0.9);
+    synth.gsMasterVolumeF(0.9);
+    synth.xgMasterVolumeF(0.9);
+  });
+  it('master tuning', function() {
+    var synth = JZZ.synth.Tiny();
+    synth.sxMasterTuningF(1.5);
+    synth.gsMasterTuningF(1.5);
+    synth.xgMasterTuningF(1.5);
+  });
+  it('rpn tuning', function() {
+    var synth = JZZ.synth.Tiny();
+    synth.rpnTuning(1, 1, 1);
   });
 });
