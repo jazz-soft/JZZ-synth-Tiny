@@ -11,6 +11,8 @@ Tiny Web-Audio GM Synthesizer
 ([g200kg/webaudio-tinysynth](https://github.com/g200kg/webaudio-tinysynth))
 wrapped for [JZZ.js](https://github.com/jazz-soft/JZZ)
 
+Includes all General MIDI instruments, plus, you can load your own sounds. 
+
 Please check the [demo](https://jazz-soft.github.io/modules/tiny/index.html)...
 
 ## Install
@@ -82,7 +84,7 @@ JZZ().openMidiOut('Web Audio').noteOn(0, 'C5', 127)
    .wait(500).noteOn(0, 'G5', 127)
    .wait(500).noteOff(0, 'C5').noteOff(0, 'E5').noteOff(0, 'G5');
 ```
-To make vitual port visible by Web MIDI API, please check https://github.com/jazz-soft/JZZ#virtual-midi-ports
+To make vitual port visible by Web MIDI API, please check the instructions at https://github.com/jazz-soft/JZZ#virtual-midi-ports
 
 ## More information
 
