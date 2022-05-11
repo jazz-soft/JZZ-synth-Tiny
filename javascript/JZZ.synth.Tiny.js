@@ -374,6 +374,7 @@ function WebAudioTinySynth(opt){
       /**/
       this.preroll=0.2;
       this.relcnt=0;
+      /* istanbul ignore next */
       setInterval(
         function(){
           if(++this.relcnt>=3){
