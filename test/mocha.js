@@ -63,8 +63,53 @@ describe('web-audio', function() {
   it('pitch bend', function() {
     var synth = JZZ.synth.Tiny();
     synth.pitchBendF(1, 0.5);
-    synth.noteOn(1, 60);
+    synth.noteOn(1, 60, 127);
     synth.pitchBendF(1, 0);
+    synth.noteOff(1, 60);
+  });
+  it('modulation', function() {
+    var synth = JZZ.synth.Tiny();
+    synth.modF(1, 0.5);
+    synth.noteOn(1, 60, 127);
+    synth.modF(1, 0);
+    synth.noteOff(1, 60);
+  });
+  it('volume', function() {
+    var synth = JZZ.synth.Tiny();
+    synth.volumeF(1, 0.5);
+    synth.noteOn(1, 60, 127);
+    synth.volumeF(1, 0);
+    synth.noteOff(1, 60);
+  });
+  it('pan', function() {
+    var synth = JZZ.synth.Tiny();
+    synth.panF(1, 0.5);
+    synth.noteOn(1, 60, 127);
+    synth.panF(1, 0);
+    synth.noteOff(1, 60);
+  });
+  it('expression', function() {
+    var synth = JZZ.synth.Tiny();
+    synth.expressionF(1, 0.5);
+    synth.noteOn(1, 60, 127);
+    synth.expressionF(1, 0);
+    synth.noteOff(1, 60);
+  });
+  it('sustain', function() {
+    var synth = JZZ.synth.Tiny();
+    synth.damper(1, true);
+    synth.noteOn(1, 60, 127);
+    synth.damper(1, false);
+    synth.noteOff(1, 60);
+  });
+  it('rpn/nrpn', function() {
+    var synth = JZZ.synth.Tiny();
+    synth.rpn(2, 0);
+    synth.dataIncr(2);
+    synth.dataDecr(2);
+    synth.nrpn(2, 0);
+    synth.dataIncr(2);
+    synth.dataDecr(2);
   });
   it('reset', function() {
     var synth = JZZ.synth.Tiny();
@@ -72,6 +117,8 @@ describe('web-audio', function() {
     synth.allSoundOff(0);
     synth.omni(0);
     synth.resetAllControllers(0);
+    synth.noteOn(0, 60, 127);
+    synth.allNotesOff(0);
   });
   it('master volume', function() {
     var synth = JZZ.synth.Tiny();
