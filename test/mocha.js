@@ -31,6 +31,7 @@ describe('web-audio', function() {
     assert.equal(info.sysex, true);
   });
   it('plug', function() {
+    JZZ({engine: 'none'})
     JZZ.synth.Tiny.register('synth');
     global.AudioContext = WAT.AudioContext;
     global.webkitAudioContext = WAT.AudioContext;
