@@ -58,7 +58,12 @@ describe('web-audio', function() {
   });
   it('program', function() {
     var synth = JZZ.synth.Tiny();
-    synth.program(1, 8);
+    synth.program(1, 47);
+    synth.noteOn(1, 60, 127);
+    synth.noteOff(1, 60);
+    synth.program(2, 55);
+    synth.noteOn(2, 60, 127);
+    synth.noteOff(2, 60);
   });
   it('pitch bend', function() {
     var synth = JZZ.synth.Tiny();
