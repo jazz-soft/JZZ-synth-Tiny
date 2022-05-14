@@ -125,6 +125,8 @@ describe('web-audio', function() {
     synth.resetAllControllers(0);
     synth.noteOn(0, 60, 127);
     synth.allNotesOff(0);
+    synth.active();
+    synth.reset();
   });
   it('master volume', function() {
     var synth = JZZ.synth.Tiny();
@@ -141,5 +143,15 @@ describe('web-audio', function() {
   it('rpn tuning', function() {
     var synth = JZZ.synth.Tiny();
     synth.rpnTuning(1, 1, 1);
+  });
+  it('scale tuning', function() {
+    var synth = JZZ.synth.Tiny();
+    synth.gsOctaveTuningF(5, 'Ab', 0.5);
+  });
+  it('drum part change', function() {
+    var synth = JZZ.synth.Tiny();
+    synth.sxGS([0x40, 0x17, 0x15, 0x01]); // drum part
+    synth.sxGS([0x40, 0x20, 0x20, 0x00]); // dummy
+    synth.sxGS([0x40, 0x17, 0x20, 0x01]); // drum part
   });
 });
