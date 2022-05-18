@@ -86,6 +86,18 @@ JZZ().openMidiOut('Web Audio').noteOn(0, 'C5', 127)
 ```
 To make vitual port visible by Web MIDI API, please check the instructions at https://github.com/jazz-soft/JZZ#virtual-midi-ports
 
+##### Get/Set sound
+
+```js
+var synth = JZZ.synth.Tiny();
+var tuba = synth.getSynth(58); // tuba
+var drum = synth.getSynth(36, true); // bass drum
+synth.setSynth(0, tuba); // set tuba to program 0 (it was piano originally);
+synth.setSynth(35, drum, true); // set bass drum to percussion instrument 35;
+```
+
+See more details at https://github.com/g200kg/webaudio-tinysynth#timbre-object-structure
+
 ## More information
 
 Please visit [**https://jazz-soft.net**](https://jazz-soft.net) for more information.  
