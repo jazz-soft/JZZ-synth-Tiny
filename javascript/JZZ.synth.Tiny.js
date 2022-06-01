@@ -18,7 +18,7 @@
   /* istanbul ignore next */
   if (JZZ.synth.Tiny) return;
 
-  var _version = '1.3.1';
+  var _version = '1.3.2';
 
 function WebAudioTinySynth(opt){
   this.__proto__ = this.sy =
@@ -530,7 +530,7 @@ function WebAudioTinySynth(opt){
     _note:function(t,ch,n,v,p){
       var out,sc,pn;
       var o=[],g=[],vp=[],fp=[],r=[];
-      var f=440*Math.pow(2,(n-69 + this.masterTuningC + this.tuningC[ch] + (this.masterTuningF + this.tuningF[ch] + this.scaleTuning[ch][n%12]))/12);
+      var f=440*Math.pow(2,(n-69 + this.masterTuningC + this.tuningC[ch] + (this.masterTuningF + this.tuningF[ch]/8192 + this.scaleTuning[ch][n%12]))/12);
       this._limitVoices(ch,n);
       for(var i=0;i<p.length;++i){
         pn=p[i];
@@ -759,7 +759,7 @@ function WebAudioTinySynth(opt){
               this.brange[ch]=(this.brange[ch]&0x3f80)|msg[2];
               break;
             case 1:
-              this.tuningF[ch]=((this.tuningF[ch]+0x2000)&0x3f80)|msg[2]-0x2000;
+              this.tuningF[ch]=(((this.tuningF[ch]+0x2000)&0x3f80)|msg[2])-0x2000;
               break;
             case 2: break;
           }
