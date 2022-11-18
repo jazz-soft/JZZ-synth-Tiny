@@ -74,7 +74,7 @@ JZZ.synth.Tiny().noteOn(0, 'C5', 127)
    .wait(500).noteOff(0, 'C5').noteOff(0, 'E5').noteOff(0, 'G5');
 ```
 
-##### Register as MIDI port
+##### Register as a MIDI port
 
 ```js
 JZZ.synth.Tiny.register('Web Audio');
