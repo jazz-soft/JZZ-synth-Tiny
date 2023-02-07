@@ -18,7 +18,7 @@
   /* istanbul ignore next */
   if (JZZ.synth.Tiny) return;
 
-  var _version = '1.3.3';
+  var _version = '1.3.4';
 
 function WebAudioTinySynth(opt){
   this.__proto__ = this.sy =
