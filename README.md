@@ -55,6 +55,15 @@ require('jzz-synth-tiny')(JZZ);
 //...
 ```
 
+##### TypeScript / ES6
+
+```ts
+import { JZZ } from 'jzz';
+import { Tiny } from 'jzz-synth-tiny';
+Tiny(JZZ);
+//...
+```
+
 ##### AMD
 
 ```js

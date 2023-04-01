@@ -1,6 +1,7 @@
 (function(global, factory) {
   /* istanbul ignore next */
   if (typeof exports === 'object' && typeof module !== 'undefined') {
+    factory.Tiny = factory;
     module.exports = factory;
   }
   else if (typeof define === 'function' && define.amd) {
@@ -18,7 +19,7 @@
   /* istanbul ignore next */
   if (JZZ.synth.Tiny) return;
 
-  var _version = '1.3.4';
+  var _version = '1.3.5';
 
 function WebAudioTinySynth(opt){
   this.__proto__ = this.sy =
