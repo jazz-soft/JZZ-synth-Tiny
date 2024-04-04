@@ -107,6 +107,24 @@ synth.setSynth(35, drum, true); // set bass drum to percussion instrument 35;
 
 See more details at https://github.com/g200kg/webaudio-tinysynth#timbre-object-structure
 
+## Using in Node.js with headless Web Audio
+
+```js
+const WAAPI = require('node-web-audio-api');
+const JZZ = require('jzz');
+require('jzz-synth-tiny')(JZZ);
+
+global.window = { AudioContext: WAAPI.AudioContext };
+
+JZZ.synth.Tiny()
+  .or(function() { console.log('Cannot open MIDI-Out!\n'/* + this.err() */); })
+  .note(0, 'C5', 127, 500).wait(500)
+  .note(0, 'E5', 127, 500).wait(500)
+  .note(0, 'G5', 127, 500).wait(500)
+  .note(9, 'C6', 127, 500).wait(500)
+  .and(function() { process.exit(); });
+```
+
 ## More information
 
 Please visit [**https://jazz-soft.net**](https://jazz-soft.net) for more information.  
