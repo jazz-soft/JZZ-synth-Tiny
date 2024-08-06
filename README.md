@@ -4,7 +4,7 @@
 [![npm](https://img.shields.io/npm/dt/jzz-synth-tiny.svg)](https://www.npmjs.com/package/jzz-synth-tiny)
 [![jsDelivr](https://data.jsdelivr.com/v1/package/npm/jzz-synth-tiny/badge)](https://www.jsdelivr.com/package/npm/jzz-synth-tiny)
 [![build](https://github.com/jazz-soft/JZZ-synth-Tiny/actions/workflows/build.yml/badge.svg)](https://github.com/jazz-soft/JZZ-synth-Tiny/actions)
-[![Coverage Status](https://coveralls.io/repos/github/jazz-soft/JZZ-synth-Tiny/badge.svg?branch=master)](https://coveralls.io/github/jazz-soft/JZZ-synth-Tiny?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/jazz-soft/JZZ-synth-Tiny/badge.svg)](https://coveralls.io/github/jazz-soft/JZZ-synth-Tiny)
 [![Try jzz-synth-tiny on RunKit](https://badge.runkitcdn.com/jzz-synth-tiny.svg)](https://npm.runkit.com/jzz-synth-tiny)
 
 Tiny Web-Audio GM Synthesizer 
