@@ -5,4 +5,3 @@ Gruntfile.js
 eslint.config.mjs
 test*
 *.html
-!test
