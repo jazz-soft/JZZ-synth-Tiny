@@ -1,6 +1,6 @@
 {
   "name": "jzz-synth-tiny",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "Tiny Web-Audio GM synth",
   "main": "javascript/JZZ.synth.Tiny.js",
   "scripts": {
@@ -20,22 +20,21 @@
   ],
   "author": "jazz-soft (https://jazz-soft.net/)",
   "dependencies": {
-    "jzz": "^1.9.2"
+    "jzz": "^1.9.6"
   },
   "devDependencies": {
-    "eslint": "^9.23.0",
+    "eslint": "^9.36.0",
     "grunt": "^1.6.1",
     "grunt-contrib-jshint": "^3.2.0",
     "grunt-contrib-uglify": "^5.2.2",
-    "jzz-gui-player": "^1.7.7",
-    "jzz-midi-gm": "^1.4.0",
-    "jzz-midi-smf": "^1.9.7",
-    "mocha": "^11.1.0",
+    "jzz-gui-player": "^1.7.9",
+    "jzz-midi-gm": "^1.4.1",
+    "jzz-midi-smf": "^1.9.9",
+    "mocha": "^11.7.2",
     "node-web-audio-api": "^1.0.4",
     "nyc": "^17.1.0",
     "web-audio-test": "^0.0.8"
   },
-  "runkitExampleFilename": "runkit.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/jazz-soft/JZZ-synth-Tiny.git"
